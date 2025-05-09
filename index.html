@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agri Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Landing Page -->
+  <div class="landing" id="landing">
+    <div class="landing-overlay">
+      <h1>Welcome to Agri Expense Tracker</h1>
+      <p>Track multiple crops' expenses with ease and improve your farm management.</p>
+      <button onclick="startApp()" class="cta-button">Get Started</button>
+    </div>
+  </div>
+
+  <!-- Main App Container (Hidden Initially) -->
+  <div class="app" id="app" style="display: none">
+    <!-- Crop Dashboard -->
+    <section class="dashboard">
+      <h2>Crops Dashboard</h2>
+      <form id="crop-form">
+        <input type="text" id="crop-name" placeholder="Enter Crop Name" required />
+        <button type="submit">Add Crop</button>
+      </form>
+      <div id="crop-list" class="crop-list"></div>
+    </section>
+
+    <!-- Crop Budget -->
+    <section id="crop-budget" class="dashboard" style="display: none">
+      <h3>Set Crop Budget</h3>
+      <form id="budget-form">
+        <input type="number" id="crop-budget-input" placeholder="Enter Budget (₹)" required />
+        <button type="submit">Set Budget</button>
+      </form>
+      <div id="budget-progress">
+        <div id="budget-bar">
+          <div id="budget-fill"></div>
+        </div>
+        <span id="budget-status"></span>
+      </div>
+    </section>
+
+    <!-- Expense Tracker -->
+    <section class="tracker" id="tracker" style="display: none">
+      <h2>Your Expense Tracker - <span id="current-crop"></span></h2>
+      <form id="expense-form">
+        <select id="category">
+          <option value="Seeds">Seeds</option>
+          <option value="Labor">Labor</option>
+          <option value="Water">Water</option>
+          <option value="Fertilizer">Fertilizer</option>
+          <option value="Pesticides">Pesticides</option>
+        </select>
+        <input type="number" id="amount" placeholder="Amount (₹)" required />
+        <input type="date" id="date" required />
+        <button type="submit">Add Expense</button>
+      </form>
+    </section>
+
+    <!-- Expense History -->
+    <section class="history" id="expense-history" style="display: none">
+      <h3>Expense History</h3>
+      <input type="text" id="search" placeholder="Search by Category or Date" />
+      <ul id="expense-list"></ul>
+    </section>
+
+    <!-- Expense Summary -->
+    <section class="summary" id="expense-summary" style="display: none">
+      <h3>Expense Summary</h3>
+      <p id="total-expenses"></p>
+      <p id="highest-expense"></p>
+      <p id="lowest-expense"></p>
+      <p id="average-expense"></p>
+    </section>
+
+    <!-- Expense Chart -->
+    <section class="chart-section" id="chart-section" style="display: none">
+      <h3>Category-wise Expense</h3>
+      <canvas id="expenseChart"></canvas>
+    </section>
+
+    <!-- Export Data -->
+    <section class="export-section" id="export-section" style="display: none">
+      <button id="export-csv">Export Data as CSV</button>
+    </section>
+
+    <!-- Back to Homepage Button -->
+    <button onclick="goBack()" class="back-button">Back to Homepage</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
